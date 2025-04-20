@@ -1,6 +1,6 @@
 <?php
 
-namespace Usman\LaravelCustomMaker;
+namespace UsmanZahid\LaravelCustomMaker;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;

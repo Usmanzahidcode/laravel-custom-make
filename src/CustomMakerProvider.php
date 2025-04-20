@@ -3,7 +3,6 @@
 namespace UsmanZahid\LaravelCustomMaker;
 
 use Illuminate\Support\ServiceProvider;
-use Usman\LaravelCustomMaker\CustomMakerCommand;
 
 class CustomMakerProvider extends ServiceProvider {
     public function register() {
