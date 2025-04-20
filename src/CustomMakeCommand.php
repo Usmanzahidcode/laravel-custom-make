@@ -4,7 +4,6 @@ namespace UsmanZahid\LaravelCustomMake;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Str;
 
 class CustomMakeCommand extends Command {
     protected $signature = 'make:custom {type} {name}';
@@ -80,8 +79,14 @@ class CustomMakeCommand extends Command {
     protected function getNamespace(string $path): string {
         $relativePath = str_replace(base_path() . '/', '', $path);
         $namespace = str_replace(['/', '\\'], '\\', $relativePath);
-        return $this->laravel->getNamespace() . trim($namespace, '\\');
+        $trimmed = trim($namespace, '\\');
+
+        $parts = explode('\\', $trimmed);
+        $capitalized = array_map('ucfirst', $parts);
+
+        return implode('\\', $capitalized);
     }
+
 
     protected function makeDirectory(string $path): void {
         if (!$this->files->isDirectory($path)) {
