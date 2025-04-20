@@ -1,0 +1,30 @@
+{
+  "name": "usmanzahid/laravel_custom_maker",
+  "description": "A package to create any kind of file defined by the user",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Usmanzahid\\LaravelCustomMaker\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Usman Zahid",
+      "email": "developerusman@yahoo.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": "8.3.*",
+    "laravel/framework": "^11.0"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Usman\\LaravelMakeHelper\\MakeHelperServiceProvider"
+      ]
+    }
+  }
+}
