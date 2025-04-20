@@ -60,7 +60,7 @@ class CustomMakerCommand extends Command {
         $this->info("{$type} {$name} created successfully at {$filePath}");
     }
 
-    protected function buildClassContent($name, $stubPath) {
+    protected function buildClassContent($name, $stubPath): array|string {
         // Get the content of the stub
         $stub = $this->files->get($stubPath);
 
