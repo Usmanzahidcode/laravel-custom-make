@@ -12,7 +12,7 @@ class CustomMakerProvider extends ServiceProvider {
     public function boot(): void {
         // Publish the configuration file so the user can modify it
         $this->publishes([
-            __DIR__ . '/../config/laravel_custom_maker.php' => config_path('laravel-custom-maker.php'),
+            __DIR__ . '/../config/laravel_custom_maker.php' => config_path('laravel_custom_maker.php'),
         ], 'config');
 
         // Publish the stub files so users can customize them
