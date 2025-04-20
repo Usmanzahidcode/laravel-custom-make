@@ -1,12 +1,12 @@
 <?php
 
-namespace UsmanZahid\LaravelCustomMaker;
+namespace UsmanZahid\LaravelCustomMake;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 
-class CustomMakerCommand extends Command {
+class CustomMakeCommand extends Command {
     protected $signature = 'make:custom {type} {name}';
     protected $description = 'Create a custom class (Defined by the developer) using a custom stub and path.';
 

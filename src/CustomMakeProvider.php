@@ -1,10 +1,10 @@
 <?php
 
-namespace UsmanZahid\LaravelCustomMaker;
+namespace UsmanZahid\LaravelCustomMake;
 
 use Illuminate\Support\ServiceProvider;
 
-class CustomMakerProvider extends ServiceProvider {
+class CustomMakeProvider extends ServiceProvider {
     public function register() {
         //
     }
@@ -12,7 +12,7 @@ class CustomMakerProvider extends ServiceProvider {
     public function boot(): void {
         // Publish the configuration file so the user can modify it
         $this->publishes([
-            __DIR__ . '/../config/laravel_custom_maker.php' => config_path('laravel_custom_maker.php'),
+            __DIR__ . '/../config/laravel_custom_make.php' => config_path('laravel_custom_maker.php'),
         ], 'config');
 
         // Publish the stub files so users can customize them
@@ -22,7 +22,7 @@ class CustomMakerProvider extends ServiceProvider {
 
         // Register the custom command
         $this->commands([
-            CustomMakerCommand::class,
+            CustomMakeCommand::class,
         ]);
     }
 }

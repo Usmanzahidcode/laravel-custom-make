@@ -1,11 +1,11 @@
 {
-  "name": "usmanzahid/laravel_custom_maker",
+  "name": "usmanzahid/laravel_custom_make",
   "description": "A package to create any kind of file defined by the user",
   "type": "library",
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "UsmanZahid\\LaravelCustomMaker\\": "src/"
+      "UsmanZahid\\LaravelCustomMake\\": "src/"
     }
   },
   "authors": [
@@ -23,7 +23,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "UsmanZahid\\LaravelCustomMaker\\CustomMakerProvider"
+        "UsmanZahid\\LaravelCustomMake\\CustomMakeProvider"
       ]
     }
   }
