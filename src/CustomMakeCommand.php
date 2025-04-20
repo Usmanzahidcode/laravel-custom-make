@@ -23,7 +23,7 @@ class CustomMakeCommand extends Command {
         $name = $this->argument('name');
 
         // Fetch the configuration for the requested type
-        $config = config("laravel_custom_maker.$type");
+        $config = config("laravel-custom-make.$type");
 
         // Check if the configuration exists for the type
         if (!$config) {
@@ -33,7 +33,7 @@ class CustomMakeCommand extends Command {
 
         // Ensure stub and path are defined in the config
         if (!isset($config['stub']) || !isset($config['path'])) {
-            $this->error("Invalid configuration for '{$type}'. Ensure stub and path are defined.");
+            $this->error("Invalid configuration for creating '{$type}'. Ensure stub and path are defined.");
             return;
         }
 
@@ -78,7 +78,7 @@ class CustomMakeCommand extends Command {
     }
 
     protected function getNamespace(string $name): string {
-        return $this->laravel->getNamespace() . 'App\\' . Str::studly($name);
+        return $this->laravel->getNamespace() . Str::studly($name);
     }
 
     protected function makeDirectory(string $path): void {

@@ -4,7 +4,7 @@ A simple Laravel package to generate custom classes (e.g., services, controllers
 
 ---
 
-## 📦 Installation
+### Installation
 
 ```bash
 composer require vendor/laravel-custom-maker
@@ -18,8 +18,8 @@ php artisan vendor:publish --tag=stubs
 ```
 
 This will:
-- Create a config/laravel-custom-maker.php config file.
-- Publish stub files to the root stubs/ directory.
+- Create a `config/laravel_custom_maker.php` config file.
+- Publish stub files to the root `stubs/` directory.
 
 ### Configuration
 Open config/laravel-custom-maker.php to define your custom make types. Example:
@@ -47,13 +47,13 @@ Example:
 ```bash
 php artisan make:custom service AuthService
 ```
-This will generate `app/Services/MyAwesomeService.php` using the corresponding stub.
+This will generate `app/Services/AuthService.php` using the corresponding stub.
 
 ### Use Cases
 
 This package is ideal for:
 
-- Adding new custom generators like Service, Action, Repository, etc.
+- Adding new custom generators like Services, DTOs, Repositories, etc.
 - Replacing or extending Laravel's default generators.
 - Creating advanced stubs with pre-defined methods, fields, or logic.
 
@@ -78,10 +78,17 @@ class {{ class }}
 ```
 
 ### Notes
-Customize stubs as you need, extend the class by adding it in the stub and import it.
+Customize stubs as you need. You may want a make type to always extend a certain class.
+Just import that class in the stub and then extend that class For example having a base
+class for a certain make type, in this case services:
+```php
+// Import the base class
+use App\Http\Services\Service;
 
-### License
-MIT
+// Add it to be extended
+class {{ class }} extends Service
+```
+
 
 
 
