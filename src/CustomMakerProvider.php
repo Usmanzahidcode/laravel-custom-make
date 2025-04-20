@@ -1,0 +1,29 @@
+<?php
+
+namespace UsmanZahid\LaravelCustomMaker;
+
+use App\Console\Commands\CustomMakerCommand;
+use Illuminate\Support\ServiceProvider;
+
+class CustomMakerServiceProvider extends ServiceProvider {
+    public function register() {
+        //
+    }
+
+    public function boot(): void {
+        // Publish the configuration file so the user can modify it
+        $this->publishes([
+            __DIR__ . '/../config/laravel-custom-maker.php' => config_path('laravel-custom-maker.php'),
+        ], 'config');
+
+        // Publish the stub files so users can customize them
+        $this->publishes([
+            __DIR__ . '/../stubs' => base_path('stubs'),
+        ], 'stubs');
+
+        // Register the custom command
+        $this->commands([
+            CustomMakerCommand::class,
+        ]);
+    }
+}
