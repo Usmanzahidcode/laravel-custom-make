@@ -52,7 +52,7 @@ class CustomMakeCommand extends Command {
         $this->makeDirectory($classPath);
 
         // Get the content from the stub file and replace placeholders
-        $content = $this->buildClassContent($name, $stubPath);
+        $content = $this->buildClassContent($name, $classPath, $stubPath);
 
         // Write the generated content to the file
         $this->files->put($filePath, $content);
@@ -60,12 +60,12 @@ class CustomMakeCommand extends Command {
         $this->info("{$type} {$name} created successfully at {$filePath}");
     }
 
-    protected function buildClassContent($name, $stubPath): array|string {
+    protected function buildClassContent($name, $classPath, $stubPath): array|string {
         // Get the content of the stub
         $stub = $this->files->get($stubPath);
 
         // Replace the placeholders in the stub with the actual class name and namespace
-        $namespace = $this->getNamespace($name);
+        $namespace = $this->getNamespace($classPath);
         $className = $this->getClassName($name);
 
         $stub = str_replace(['{{ class }}', '{{ namespace }}'], [$className, $namespace], $stub);
@@ -77,8 +77,10 @@ class CustomMakeCommand extends Command {
         return class_basename($name);
     }
 
-    protected function getNamespace(string $name): string {
-        return $this->laravel->getNamespace() . Str::studly($name);
+    protected function getNamespace(string $path): string {
+        $relativePath = str_replace(base_path() . '/', '', $path);
+        $namespace = str_replace(['/', '\\'], '\\', $relativePath);
+        return $this->laravel->getNamespace() . trim($namespace, '\\');
     }
 
     protected function makeDirectory(string $path): void {
