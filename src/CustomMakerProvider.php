@@ -2,8 +2,8 @@
 
 namespace UsmanZahid\LaravelCustomMaker;
 
-use App\Console\Commands\CustomMakerCommand;
 use Illuminate\Support\ServiceProvider;
+use Usman\LaravelCustomMaker\CustomMakerCommand;
 
 class CustomMakerServiceProvider extends ServiceProvider {
     public function register() {

@@ -5,7 +5,7 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Usmanzahid\\LaravelCustomMaker\\": "src/"
+      "UsmanZahid\\LaravelCustomMaker\\": "src/"
     }
   },
   "authors": [
@@ -23,7 +23,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Usman\\LaravelCustomMaker\\CustomMakerProvider"
+        "UsmanZahid\\LaravelCustomMaker\\CustomMakerProvider"
       ]
     }
   }
