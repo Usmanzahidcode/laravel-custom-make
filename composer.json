@@ -23,7 +23,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Usman\\LaravelMakeHelper\\MakeHelperServiceProvider"
+        "Usman\\LaravelMakeHelper\\CustomMakerProvider"
       ]
     }
   }
