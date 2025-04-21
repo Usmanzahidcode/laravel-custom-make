@@ -75,7 +75,7 @@ class CustomMakeCommand extends Command {
     protected function getClassName(string $name): string {
         return class_basename($name);
     }
-
+ 
     protected function getNamespace(string $path): string {
         $relativePath = str_replace(base_path() . '/', '', $path);
         $namespace = str_replace(['/', '\\'], '\\', $relativePath);
