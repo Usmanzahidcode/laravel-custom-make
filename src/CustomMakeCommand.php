@@ -48,7 +48,7 @@ class CustomMakeCommand extends Command {
         }
 
         // Ensure the directory exists
-        $this->makeDirectory(dirname($classPath));
+        $this->makeDirectory(dirname($filePath));
 
         // Get the content from the stub file and replace placeholders
         $content = $this->buildClassContent($name, $classPath, $stubPath);
@@ -86,7 +86,6 @@ class CustomMakeCommand extends Command {
 
         return implode('\\', $capitalized);
     }
- 
 
     protected function makeDirectory(string $path): void {
         if (!$this->files->isDirectory($path)) {
