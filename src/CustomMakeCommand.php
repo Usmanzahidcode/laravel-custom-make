@@ -48,10 +48,10 @@ class CustomMakeCommand extends Command {
         }
 
         // Ensure the directory exists
-        $this->makeDirectory(dirname($filePath));
+        $this->makeDirectory($filePath);
 
         // Get the content from the stub file and replace placeholders
-        $content = $this->buildClassContent($name, $classPath, $stubPath);
+        $content = $this->buildClassContent($name, $filePath, $stubPath);
 
         // Write the generated content to the file
         $this->files->put($filePath, $content);
@@ -59,12 +59,12 @@ class CustomMakeCommand extends Command {
         $this->info("{$type} {$name} created successfully at {$filePath}");
     }
 
-    protected function buildClassContent($name, $classPath, $stubPath): array|string {
+    protected function buildClassContent($name, $filePath, $stubPath): array|string {
         // Get the content of the stub
         $stub = $this->files->get($stubPath);
 
         // Replace the placeholders in the stub with the actual class name and namespace
-        $namespace = $this->getNamespace($classPath);
+        $namespace = $this->getNamespace($filePath);
         $className = $this->getClassName($name);
 
         $stub = str_replace(['{{ class }}', '{{ namespace }}'], [$className, $namespace], $stub);
@@ -76,8 +76,8 @@ class CustomMakeCommand extends Command {
         return class_basename($name);
     }
 
-    protected function getNamespace(string $path): string {
-        $relativePath = str_replace(base_path() . '/', '', $path);
+    protected function getNamespace(string $filePath): string {
+        $relativePath = str_replace(base_path() . '/', '', dirname($filePath));
         $namespace = str_replace(['/', '\\'], '\\', $relativePath);
         $trimmed = trim($namespace, '\\');
 
@@ -87,9 +87,11 @@ class CustomMakeCommand extends Command {
         return implode('\\', $capitalized);
     }
 
-    protected function makeDirectory(string $path): void {
-        if (!$this->files->isDirectory($path)) {
-            $this->files->makeDirectory($path, 0777, true);
+    protected function makeDirectory(string $filePath): void {
+        $filePath = dirname($filePath);
+
+        if (!$this->files->isDirectory($filePath)) {
+            $this->files->makeDirectory($filePath, 0777, true);
         }
     }
 }
