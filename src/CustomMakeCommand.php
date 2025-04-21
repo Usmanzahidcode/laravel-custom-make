@@ -48,7 +48,7 @@ class CustomMakeCommand extends Command {
         }
 
         // Ensure the directory exists
-        $this->makeDirectory($classPath);
+        $this->makeDirectory(dirname($classPath));
 
         // Get the content from the stub file and replace placeholders
         $content = $this->buildClassContent($name, $classPath, $stubPath);
