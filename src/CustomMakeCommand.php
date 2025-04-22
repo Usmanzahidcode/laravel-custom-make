@@ -77,13 +77,16 @@ class CustomMakeCommand extends Command {
     }
 
     protected function getNamespace(string $filePath): string {
+        // Remove the prefixed base path
         $relativePath = str_replace(base_path() . '/', '', dirname($filePath));
         $namespace = str_replace(['/', '\\'], '\\', $relativePath);
         $trimmed = trim($namespace, '\\');
 
+        // Capitalize the whole path
         $parts = explode('\\', $trimmed);
         $capitalized = array_map('ucfirst', $parts);
 
+        // Return the final namespace
         return implode('\\', $capitalized);
     }
 
