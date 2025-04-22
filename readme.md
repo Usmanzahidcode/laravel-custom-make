@@ -1,4 +1,4 @@
-# Laravel Custom Maker
+# Laravel Custom Make
 
 A Laravel package to generate custom classes using user-defined stub templates and configurable paths. 
 You can define custom make types to use with the make command.
