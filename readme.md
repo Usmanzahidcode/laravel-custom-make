@@ -1,13 +1,14 @@
-# Laravel Custom Maker
+# Laravel Custom Make
 
-A simple Laravel package to generate custom classes (e.g., services, controllers, models, etc.) using user-defined stub templates and configurable paths.
+A Laravel package to generate custom classes using user-defined stub templates and configurable paths. 
+You can define custom make types to use with the make command.
 
 ---
 
 ### Installation
 
 ```bash
-composer require vendor/laravel-custom-maker
+composer require usmanzahid/laravel-custom-make
 ```
 ### Publishing Configuration & Stubs
 After installing, publish the configuration file and default stubs using:
@@ -18,11 +19,11 @@ php artisan vendor:publish --tag=stubs
 ```
 
 This will:
-- Create a `config/laravel_custom_maker.php` config file.
+- Create a `config/laravel-custom-make.php` config file.
 - Publish stub files to the root `stubs/` directory.
 
 ### Configuration
-Open config/laravel-custom-maker.php to define your custom make types. Example:
+Open config/laravel-custom-make.php to define your custom make types. Example for services:
 
 ```php
 return [
@@ -54,6 +55,7 @@ This will generate `app/Services/AuthService.php` using the corresponding stub.
 This package is ideal for:
 
 - Adding new custom generators like Services, DTOs, Repositories, etc.
+- Generating custom class types the artisan way.
 - Replacing or extending Laravel's default generators.
 - Creating advanced stubs with pre-defined methods, fields, or logic.
 
